@@ -71,22 +71,27 @@
       });
 
       // Ajout du marqueur (exemple : Tunis)
-      var redIcon = new L.Icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-      });
+      var locations = [
+        { name: "Tunis", coords: [36.8065, 10.1815], color: "black" },
+        { name: "Sfax", coords: [34.7406, 10.7603], color: "green" },
+        { name: "Désert", coords: [32.3182, 9.4766], color: "orange" }
+      ];
 
-      L.marker([34.0, 9.0], { icon: redIcon })
-        .addTo(map)
-        .bindPopup("<span style='color:red'>Point important !</span>");
+      locations.forEach(function (loc) {
+        var icon = new L.Icon({
+          iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${loc.color}.png`,
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          shadowSize: [41, 41]
+        });
+
+        L.marker(loc.coords, { icon: icon })
+          .addTo(map)
+          .bindPopup(loc.name);
+      });
       // Ajout des principales villes
       var villes = [
-        { nom: "Tunis", coords: [36.8065, 10.1815] },
-        { nom: "Sfax", coords: [34.7406, 10.7603] },
         { nom: "Sousse", coords: [35.8254, 10.6369] },
         { nom: "Kairouan", coords: [35.6712, 10.1006] }
       ];

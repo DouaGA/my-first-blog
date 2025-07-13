@@ -121,13 +121,13 @@ h4 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .page-header {
-    background-color: #C25100;
+    background-color: #e65eb9;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
 
 .page-header h1 a {
-    color: #FFFFFF;
+    color: #ec5ae7;
     text-decoration: none;
 }
 
